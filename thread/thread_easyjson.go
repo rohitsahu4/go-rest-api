@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson2d00218DecodeTodoThread(in *jlexer.Lexer, out *ThreadSlice) {
+func easyjson2d00218DecodeGoRestApiThread(in *jlexer.Lexer, out *ThreadSlice) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		in.Skip()
@@ -45,7 +45,7 @@ func easyjson2d00218DecodeTodoThread(in *jlexer.Lexer, out *ThreadSlice) {
 		in.Consumed()
 	}
 }
-func easyjson2d00218EncodeTodoThread(out *jwriter.Writer, in ThreadSlice) {
+func easyjson2d00218EncodeGoRestApiThread(out *jwriter.Writer, in ThreadSlice) {
 	if in == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 		out.RawString("null")
 	} else {
@@ -63,95 +63,27 @@ func easyjson2d00218EncodeTodoThread(out *jwriter.Writer, in ThreadSlice) {
 // MarshalJSON supports json.Marshaler interface
 func (v ThreadSlice) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson2d00218EncodeTodoThread(&w, v)
+	easyjson2d00218EncodeGoRestApiThread(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v ThreadSlice) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson2d00218EncodeTodoThread(w, v)
+	easyjson2d00218EncodeGoRestApiThread(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *ThreadSlice) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson2d00218DecodeTodoThread(&r, v)
+	easyjson2d00218DecodeGoRestApiThread(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *ThreadSlice) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson2d00218DecodeTodoThread(l, v)
+	easyjson2d00218DecodeGoRestApiThread(l, v)
 }
-func easyjson2d00218DecodeTodoThread1(in *jlexer.Lexer, out *ThreadMap) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		in.Skip()
-	} else {
-		in.Delim('{')
-		if !in.IsDelim('}') {
-			*out = make(ThreadMap)
-		} else {
-			*out = nil
-		}
-		for !in.IsDelim('}') {
-			key := int(in.IntStr())
-			in.WantColon()
-			var v4 Thread
-			(v4).UnmarshalEasyJSON(in)
-			(*out)[key] = v4
-			in.WantComma()
-		}
-		in.Delim('}')
-	}
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson2d00218EncodeTodoThread1(out *jwriter.Writer, in ThreadMap) {
-	if in == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-		out.RawString(`null`)
-	} else {
-		out.RawByte('{')
-		v5First := true
-		for v5Name, v5Value := range in {
-			if v5First {
-				v5First = false
-			} else {
-				out.RawByte(',')
-			}
-			out.IntStr(int(v5Name))
-			out.RawByte(':')
-			(v5Value).MarshalEasyJSON(out)
-		}
-		out.RawByte('}')
-	}
-}
-
-// MarshalJSON supports json.Marshaler interface
-func (v ThreadMap) MarshalJSON() ([]byte, error) {
-	w := jwriter.Writer{}
-	easyjson2d00218EncodeTodoThread1(&w, v)
-	return w.Buffer.BuildBytes(), w.Error
-}
-
-// MarshalEasyJSON supports easyjson.Marshaler interface
-func (v ThreadMap) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson2d00218EncodeTodoThread1(w, v)
-}
-
-// UnmarshalJSON supports json.Unmarshaler interface
-func (v *ThreadMap) UnmarshalJSON(data []byte) error {
-	r := jlexer.Lexer{Data: data}
-	easyjson2d00218DecodeTodoThread1(&r, v)
-	return r.Error()
-}
-
-// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *ThreadMap) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson2d00218DecodeTodoThread1(l, v)
-}
-func easyjson2d00218DecodeTodoThread2(in *jlexer.Lexer, out *Thread) {
+func easyjson2d00218DecodeGoRestApiThread1(in *jlexer.Lexer, out *Thread) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -188,7 +120,7 @@ func easyjson2d00218DecodeTodoThread2(in *jlexer.Lexer, out *Thread) {
 		in.Consumed()
 	}
 }
-func easyjson2d00218EncodeTodoThread2(out *jwriter.Writer, in Thread) {
+func easyjson2d00218EncodeGoRestApiThread1(out *jwriter.Writer, in Thread) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -238,23 +170,23 @@ func easyjson2d00218EncodeTodoThread2(out *jwriter.Writer, in Thread) {
 // MarshalJSON supports json.Marshaler interface
 func (v Thread) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson2d00218EncodeTodoThread2(&w, v)
+	easyjson2d00218EncodeGoRestApiThread1(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Thread) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson2d00218EncodeTodoThread2(w, v)
+	easyjson2d00218EncodeGoRestApiThread1(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Thread) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson2d00218DecodeTodoThread2(&r, v)
+	easyjson2d00218DecodeGoRestApiThread1(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Thread) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson2d00218DecodeTodoThread2(l, v)
+	easyjson2d00218DecodeGoRestApiThread1(l, v)
 }
